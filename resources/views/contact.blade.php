@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact</title>
-</head>
-<body>
-    <ul>
+<x-layout>
+  <x-slot:title>{{ $title }}</x-slot:title>
+  <ul>
         <li>
             <a href="https://instagram.com/hafizhnjwn">Instagram</a>
         </li>
+        <li>
+            <a href="https://wa.me/+6282351140130">Whatsapp</a>
+        </li>
     </ul>
-</body>
-</html>
+</x-layout>

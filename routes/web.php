@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Arr;
 
@@ -8,46 +9,12 @@ Route::get('/', function () {
 });
 
 Route::get('/posts', function () {
-    return view('posts', ['title' => 'Blog', 'posts' =>[
-        [
-            'id' => 1,
-            'slug' => 'salma-samsung',
-            'title' => 'Salma Samsung',
-            'author' => 'Muhammad Hafizh Najwan Noor',
-            'body' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam impedit ipsum similique ducimus quod, amet perferendis quidem totam illum nihil debitis consequatur inventore dolorem nobis quam expedita. Eaque, mollitia voluptate.'
-        ],
-        [
-            'id' => 2,
-            'slug' => 'rayzord',
-            'title' => 'Rayzord',
-            'author' => 'Neva Talitha Desian Noor',
-            'body' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe aperiam sunt, error obcaecati tempora fuga quod deleniti sint, temporibus, ipsam maiores non harum ad quo sequi cupiditate? Totam, maiores vel. '
-        ]
-    ]]);
+    return view('posts', ['title' => 'Blog', 'posts' =>Post::all()]);
 });
 
 Route::get('/posts/{slug}', function($slug){
-    $posts = [
-        [
-            'id' => 1,
-            'slug' => 'salma-samsung',
-            'title' => 'Salma Samsung',
-            'author' => 'Muhammad Hafizh Najwan Noor',
-            'body' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam impedit ipsum similique ducimus quod, amet perferendis quidem totam illum nihil debitis consequatur inventore dolorem nobis quam expedita. Eaque, mollitia voluptate.'
-        ],
-        [
-            'id' => 2,
-            'slug' => 'rayzord',
-            'title' => 'Rayzord',
-            'author' => 'Neva Talitha Desian Noor',
-            'body' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe aperiam sunt, error obcaecati tempora fuga quod deleniti sint, temporibus, ipsam maiores non harum ad quo sequi cupiditate? Totam, maiores vel. '
-        ]
 
-    ];
-
-    $post = Arr::first($posts, function($post) use ($slug) {
-        return $post['slug'] == $slug;
-    });
+    $post= Post::find($slug);
 
     return view('post', ['title' => 'Single Post', 'post' => $post]);
 });

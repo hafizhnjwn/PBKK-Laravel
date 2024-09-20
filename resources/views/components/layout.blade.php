@@ -18,7 +18,7 @@
   ```
 -->
 <div class="min-h-full">
-  <x-nav-bar></x-nav-bar>
+  <x-navbar></x-navbar>
   <x-header>{{ $title }}</x-header>
 
   <main>
